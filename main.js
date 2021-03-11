@@ -23,15 +23,15 @@ function getFullName(object) {
   return object.firstName + " " + object.lastName;
 }
 
-function setFirstName(object) {
+function setFirstName(object, newFirst) {
   // `setFirstName({firstName: 'Petra', lastName: 'Solano'}, 'Anthony') // -> {firstName: 'Anthony', lastName: 'Solano'}`
-  object.firstName = "Kelly";
+  object.firstName = newFirst;
 }
 
-function setAge(object) {
+function setAge(object, newAge) {
   // `setAge` - changes the value of the age property of the given person object to the given value
   // `setAge({firstName: 'Colin', lastName: 'Jaffe', age: 39}, 45) // -> {firstName: 'Colin', lastName: 'Jaffe', age: 45}`
-  object.age = 29;
+  object.age = newAge;
 }
 
 function giveBirthday(object) {
@@ -40,11 +40,28 @@ function giveBirthday(object) {
   // * `giveBirthday({firstName: 'Colin', lastName: 'Jaffe', age: 39}) // -> {firstName: 'Colin', lastName: 'Jaffe', age: 40}`
   // * `giveBirthday({firstName: 'Petra', lastName: 'Solano', age: 29}) // -> {firstName: 'Solano', lastName: 'Solano', age: 30}`
   // * `giveBirthday({firstName: 'Baby', lastName: 'Jaffe'}) // -> {firstName: 'Baby', lastName: 'Jaffe', age: 1}`
+
+  if (object.age !== undefined) {
+    object.age++;
+  } else {
+    object.age = 1;
+  }
 }
 
-function marry(object) {
+function marry(object1, object2) {
   // * `marry` - sets the marital status of both given people to `true` and sets each person's
   // `spouseName` property to be the full name of the other
+  object1.married = true;
+  object2.married = true;
+  object1.spouseName = getFullName(object2);
+  object2.spouseName = getFullName(object1);
+}
+
+function divorce(object1, object2) {
+  object1.married = false;
+  object2.married = false;
+  delete object1.spouseName;
+  delete object2.spouseName;
 }
 
 // Our code here. Don't touch!
