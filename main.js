@@ -41,9 +41,12 @@ function giveBirthday(object) {
   // * `giveBirthday({firstName: 'Petra', lastName: 'Solano', age: 29}) // -> {firstName: 'Solano', lastName: 'Solano', age: 30}`
   // * `giveBirthday({firstName: 'Baby', lastName: 'Jaffe'}) // -> {firstName: 'Baby', lastName: 'Jaffe', age: 1}`
 
+  // if age is not undefined
   if (object.age !== undefined) {
+    // increment age by 1
     object.age++;
   } else {
+    // else set age to 1 if undefined
     object.age = 1;
   }
 }
